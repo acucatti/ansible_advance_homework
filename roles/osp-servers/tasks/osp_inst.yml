@@ -22,7 +22,7 @@
   register: instanceip
 
 
-- name: Add floating IP to "{{ item.key }}"
+- name: Add floating IP 
   os_floating_ip:
     cloud: ospcloud
     state: present
@@ -38,7 +38,7 @@
   debug: var=instancefloatingip.floating_ip.floating_ip_address
 
 
-- name: Wait for "{{ instance_name }}" to be available
+- name: Wait for "{{ item.key }}" to be available
   wait_for:
     host: "{{ instancefloatingip.floating_ip.floating_ip_address }}"
     port: 22
