@@ -10,6 +10,7 @@
     security_groups: "{{ item.value.security_group }}"
     key_name: "{{ item.value.key_name }}"
     wait: yes
+    state: present
     nics:
     - net-name: int_network
     userdata: |
@@ -21,7 +22,7 @@
   register: instanceip
 
 
-- name: Add floating IP to "{{ instance_name }}"
+- name: Add floating IP to "{{ item.key }}"
   os_floating_ip:
     cloud: ospcloud
     state: present
