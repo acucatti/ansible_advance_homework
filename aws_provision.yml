@@ -1,5 +1,6 @@
 ---
-- hosts: workstation
+- name: AWS Prod Provision
+  hosts: workstation
   become: true
   gather_facts: false
   tasks:
@@ -7,6 +8,7 @@
       file:
         path: /root/bin
         state: directory
+
     - name: get script common.sh
       get_url:
         url: "{{ param_repo_base }}/scripts/common.sh"
@@ -18,11 +20,13 @@
         url: "{{ param_repo_base }}/scripts/jq-linux64"
         dest: /root/bin/jq
         mode: 0755
+
     - name: get script order_svc.sh
       get_url:
         url: "{{ param_repo_base }}/scripts/order_svc.sh"
         dest: /root/order_svc.sh
         mode: 0755
+
     - name: create credentials
       copy:
         content: |
