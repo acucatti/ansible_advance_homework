@@ -52,4 +52,4 @@
 
     - name: Wait for mail
       pause:
-        minutes: 10 
+        minutes: 20 
