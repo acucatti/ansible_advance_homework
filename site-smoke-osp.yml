@@ -1,4 +1,5 @@
-- hosts: workstation
+- name: TEST QA Env
+  hosts: workstation
   gather_facts: false
   tasks:
   - name: OpenStack servers
